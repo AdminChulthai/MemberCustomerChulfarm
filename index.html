@@ -1513,7 +1513,7 @@
         function openQRScanner() {
             document.getElementById('qr-scanner-modal').classList.remove('hidden');
             isProcessingQR = false; html5QrCode = new Html5Qrcode("qr-reader");
-            const config = { fps: 10, qrbox: { width: 250, height: 250 } };
+            const config = { fps: 10, qrbox: { width: 300, height: 150 } };
             html5QrCode.start({ facingMode: "environment" }, config,
                 (decodedText) => {
                     if (isProcessingQR) return;
