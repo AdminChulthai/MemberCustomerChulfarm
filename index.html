@@ -1518,20 +1518,11 @@
                 (decodedText) => {
                     if (isProcessingQR) return;
                     isProcessingQR = true;
-                    document.getElementById('qr-processing').classList.remove('hidden'); document.getElementById('qr-processing').classList.add('flex');
                     try { html5QrCode.stop().catch(e => console.log(e)); } catch (e) { }
                     scannedQRCodeData = decodedText;
-                    callGasApi('decodeProductQR', { qrText: decodedText })
-                        .then(res => {
-                            closeQRScanner();
-                            if (res.success) {
-                                document.getElementById('fb-silkType').value = res.silkType;
-                                document.querySelectorAll('input[name="fb-grade"]').forEach(r => { if (r.value === res.grade) r.checked = true; });
-                                const qrDisplay = document.getElementById('fb-scanned-qr-display');
-                                qrDisplay.innerText = "Code: " + decodedText; qrDisplay.classList.remove('hidden');
-                                showMsg(t('success'), `Type: ${res.silkType}\nGrade: ${res.grade}`);
-                            } else { showMsg(t('error'), res.message); }
-                        }).catch(err => { closeQRScanner(); showMsg(t('error'), 'QR Decode failed'); });
+                    const qrDisplay = document.getElementById('fb-scanned-qr-display');
+                    qrDisplay.innerText = "Code: " + decodedText; qrDisplay.classList.remove('hidden');
+                    closeQRScanner();
                 }, (errorMessage) => { /* ignore */ }
             ).catch(err => { showMsg(t('error'), 'Camera permission denied or not available'); closeQRScanner(); });
         }
