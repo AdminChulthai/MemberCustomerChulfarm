@@ -389,13 +389,18 @@
                         <div>
                             <label class="block text-lg font-bold text-gray-800 mb-2"
                                 data-i18n="silk_type">ชนิดเส้นไหม</label>
-                            <input type="text" id="fb-silkType" list="list-silk-types"
-                                class="w-full appearance-none outline-none block bg-white text-gray-800 border-2 border-gray-300 rounded-xl px-4 py-4 text-lg font-medium focus:border-blue-500 focus:ring-0 transition-all"
-                                style="max-width: 100%; box-sizing: border-box;"
-                                data-i18n-placeholder="silk_type_placeholder" placeholder="พิมพ์หรือเลือกชนิดเส้นไหม">
-                            <datalist id="list-silk-types"></datalist>
+                            <select id="fb-silkType"
+                                class="w-full appearance-none outline-none block bg-white text-gray-800 border-2 border-gray-300 rounded-xl px-4 py-4 text-lg font-bold focus:border-blue-500 focus:ring-0 transition-all"
+                                style="max-width: 100%; box-sizing: border-box; background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%236b7280%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'); background-repeat: no-repeat; background-position: right 1rem center; background-size: 0.65rem auto;">
+                                <option value="" disabled selected data-i18n="silk_type_placeholder">เลือกกลุ่มสินค้า
+                                </option>
+                                <option value="ปลาส้มถัง" data-i18n="prod_group_1">ปลาส้มถัง</option>
+                                <option value="ดักแด้" data-i18n="prod_group_2">ดักแด้</option>
+                                <option value="แปรรูปอื่นๆ" data-i18n="prod_group_3">แปรรูปอื่นๆ</option>
+                            </select>
+                            <datalist id="list-silk-types" class="hidden"></datalist>
                         </div>
-                        <div>
+                        <div class="hidden">
                             <label class="block text-lg font-bold text-gray-800 mb-3" data-i18n="grade">เกรด</label>
                             <div id="fb-grade-container" class="flex flex-wrap gap-3">
                             </div>
@@ -855,10 +860,13 @@
                 fb_service: "บริการ",
                 scan_qr_tag: "สแกน QR ป้ายสินค้า",
                 or_fill_below: "หรือ กรอกข้อมูลด้านล่างหากไม่มีป้าย",
-                silk_type: "ชนิดเส้นไหม",
-                silk_type_placeholder: "พิมพ์หรือเลือกชนิดเส้นไหม",
+                silk_type: "กลุ่มสินค้า",
+                silk_type_placeholder: "เลือกกลุ่มสินค้า",
+                prod_group_1: "ปลาส้มถัง",
+                prod_group_2: "ดักแด้",
+                prod_group_3: "แปรรูปอื่นๆ",
                 grade: "เกรด",
-                weight: "จำนวน (กิโลกรัม)",
+                weight: "จำนวน (กิโลกรัม / ถัง / ชิ้น)",
                 weight_placeholder: "ตัวอย่าง: 5.5",
                 buy_date: "วันที่ซื้อ",
                 problems_found: "ปัญหาที่พบ (เลือกได้มากกว่า 1)",
@@ -913,9 +921,8 @@
                 msg_cancel_desc: "แต้มและจำนวนสิทธิ์จะถูกคืนให้โดยอัตโนมัติ",
                 msg_processing: "กำลังดำเนินการ...",
                 // ข้อมูล Array ที่ต้องแปลสำหรับ UI (แต่ค่าส่งกลับหลังบ้านยังเป็นภาษาไทย)
-                prob_1: "เส้นไหม หด เกลียวแน่น", prob_2: "เส้นไหม ขาด", prob_3: "เส้นไหม เส้นเล็ก/ใหญ่",
-                prob_4: "เส้นไหม แบน", prob_5: "เส้นไหม เปื้อน (สี, น้ำมัน)", prob_6: "เส้นไหม เป็นขน",
-                prob_7: "เส้นไหม ด่าง", prob_8: "เส้นไหม กรอยาก", prob_9: "หัวม้วน เอียง", prob_other: "อื่นๆ",
+                prob_1: "บรรจุภัณฑ์ชำรุด/เสียหาย", prob_2: "สินค้าหมดอายุ", prob_3: "กลิ่น/สี/รสชาติผิดปกติ",
+                prob_4: "พบสิ่งแปลกปลอม", prob_5: "น้ำหนัก/ปริมาณไม่ถูกต้อง", prob_other: "อื่นๆ",
                 svc_prob_1: "ใช้ถ้อยคำไม่สุภาพ ไม่ยิ้มแย้ม", svc_prob_2: "ให้ข้อมูลคุณสมบัติสินค้าไม่ครบถ้วน",
                 svc_prob_3: "แก้ไขปัญหา/ตอบคำถามล่าช้า", svc_prob_4: "ติดต่อยาก"
             },
@@ -950,10 +957,13 @@
                 fb_service: "Service",
                 scan_qr_tag: "Scan Tag QR Code",
                 or_fill_below: "Or fill details manually",
-                silk_type: "Silk Type",
-                silk_type_placeholder: "Type or select silk type",
+                silk_type: "Product Group",
+                silk_type_placeholder: "Select Product Group",
+                prod_group_1: "Pla Som Thang (Pickled Fish Bucket)",
+                prod_group_2: "Pupae (Silkworm)",
+                prod_group_3: "Other Processed Products",
                 grade: "Grade",
-                weight: "Weight (KG)",
+                weight: "Quantity (KG / Bucket / Pcs)",
                 weight_placeholder: "Example: 5.5",
                 buy_date: "Purchase Date",
                 problems_found: "Problems Found (Select multiple)",
@@ -1008,9 +1018,8 @@
                 msg_cancel_desc: "Points and limits will be refunded automatically",
                 msg_processing: "Processing...",
                 // Translation for array UI
-                prob_1: "Shrunk / Tight Twist", prob_2: "Broken Silk", prob_3: "Small/Large Silk",
-                prob_4: "Flat Silk", prob_5: "Stained (Color/Oil)", prob_6: "Hairy Silk",
-                prob_7: "Spotted Silk", prob_8: "Hard to Reel", prob_9: "Tilted Roll", prob_other: "Others",
+                prob_1: "Damaged Packaging", prob_2: "Expired Product", prob_3: "Abnormal Smell/Color/Taste",
+                prob_4: "Foreign Object Found", prob_5: "Incorrect Weight/Quantity", prob_other: "Others",
                 svc_prob_1: "Impolite / No smile", svc_prob_2: "Incomplete product info",
                 svc_prob_3: "Slow response/solving", svc_prob_4: "Hard to contact"
             }
@@ -1032,7 +1041,7 @@
         // ========================================================
         // ตัวแปร Global ทั้งหมดของแอป (ห้ามลบ)
         // ========================================================
-        const GAS_WEBAPP_URL = "https://script.google.com/macros/s/AKfycbzjR-IW9j5diCpXxA7VDcQhtMbgMjJYRngggHHYycyydawoTybuY4ERrb8W9QlJhrnvqA/exec";
+        const GAS_WEBAPP_URL = "https://script.google.com/macros/s/AKfycbyrrcbyd50N3GfzpWcyNYfoiMvyxpEk1KkyCrdk0vwMa1vzJCJFGTzJVqspw15c4xC0/exec";
 
         let isFeedbackFormLoaded = false;
         let isServiceFormLoaded = false;
@@ -1042,9 +1051,12 @@
         let isProcessingQR = false;
 
         const problemMap = {
-            "เส้นไหม หด เกลียวแน่น": "prob_1", "เส้นไหม ขาด": "prob_2", "เส้นไหม เส้นเล็ก/ใหญ่": "prob_3",
-            "เส้นไหม แบน": "prob_4", "เส้นไหม เปื้อน (สี, น้ำมัน)": "prob_5", "เส้นไหม เป็นขน": "prob_6",
-            "เส้นไหม ด่าง": "prob_7", "เส้นไหม กรอยาก": "prob_8", "หัวม้วน เอียง": "prob_9", "อื่นๆ": "prob_other"
+            "บรรจุภัณฑ์ชำรุด/เสียหาย": "prob_1",
+            "สินค้าหมดอายุ": "prob_2",
+            "กลิ่น/สี/รสชาติผิดปกติ": "prob_3",
+            "พบสิ่งแปลกปลอม": "prob_4",
+            "น้ำหนัก/ปริมาณไม่ถูกต้อง": "prob_5",
+            "อื่นๆ": "prob_other"
         };
         const problemList = Object.keys(problemMap);
 
